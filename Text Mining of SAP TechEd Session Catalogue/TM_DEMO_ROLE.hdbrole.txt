@@ -1,0 +1,6 @@
+role tm_demo::TM_DEMO_ROLE extends catalog role "CONTENT_ADMIN"
+{
+catalog schema "TM_DEMO": INDEX, EXECUTE, SELECT, UPDATE, DEBUG;
+
+
+}

@@ -1,0 +1,32 @@
+PROCEDURE "TM_DEMO"."tm_demo::session_fix" ( ) 
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   DECLARE l_session NVARCHAR(20);
+   DECLARE l_category NVARCHAR(100);
+   DECLARE l_title NVARCHAR(200);
+   DECLARE l_description NVARCHAR(2000);
+     
+  DECLARE CURSOR c_sessions FOR
+  SELECT "SESSION", "CATEGORY", "TITLE",  "DESCRIPTION"
+  FROM "TM_DEMO"."tm_demo::session";
+  FOR cur_row AS c_sessions DO
+      
+     SELECT REPLACE (cur_row."CATEGORY", 'colon', ':' ) INTO l_category FROM DUMMY ;
+     SELECT REPLACE (cur_row."TITLE", 'colon', ':' ) INTO l_title FROM DUMMY;
+     SELECT REPLACE (cur_row."DESCRIPTION", 'colon', ':' ) INTO l_description FROM DUMMY; 
+      
+     UPDATE "TM_DEMO"."tm_demo::session"
+     SET "CATEGORY" = l_category,
+         "TITLE"    = l_title,
+         "DESCRIPTION" = l_description
+     WHERE "SESSION" = cur_row."SESSION";  
+     
+   END FOR;  
+   
+END
+

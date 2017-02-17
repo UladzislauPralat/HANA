@@ -1,0 +1,9 @@
+namespace tm_demo; 
+@Schema:'TM_DEMO'
+@Catalog.tableType:#COLUMN
+entity session {
+     key SESSION : String(20) not null;
+     CATEGORY: hana.NCHAR(100);
+     TITLE: hana.NCHAR(200);
+     DESCRIPTION : hana.VARCHAR(2000);
+};                     

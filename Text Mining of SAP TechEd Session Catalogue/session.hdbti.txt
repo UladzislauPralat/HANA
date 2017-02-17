@@ -1,0 +1,6 @@
+import = [
+           { cdstable = "tm_demo::session";
+             file = "tm_demo:session.csv";
+       	     header = false; 
+       	     delimField = ":";}   
+	];   
