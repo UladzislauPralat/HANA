@@ -1,0 +1,6 @@
+role ta_demo::TA_DEMO_ROLE extends catalog role "CONTENT_ADMIN"
+{
+catalog schema "TA_DEMO": INDEX, EXECUTE;
+
+
+}
